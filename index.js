@@ -13,6 +13,9 @@
  * into the function identity.
  * @returns: input value unchanged.
  */
+ function identity(value) {
+  return value;
+}
  module.exports.identity = identity;
 
  /**
