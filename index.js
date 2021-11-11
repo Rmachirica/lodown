@@ -20,7 +20,7 @@
  module.exports.identity = identity;
 
  /**
-  * typeOf: Designed to any input value, check the data type of value
+  * typeOf: Designed to take any input value, check the data type of value
   * and return a string of the value's type.
   * @param {collection or a primitive value}:intended to examine it's type
   * returns: a string of the value's type
