@@ -8,7 +8,8 @@
 */
 
 /**
- * identity: Designed to take a value and return it.
+ * identity: Designed to take any value 
+ * and simply and return it.
  * @param {collection or a primitive value} : the value to be passed 
  * into the function identity.
  * @returns: input value unchanged.
@@ -19,8 +20,9 @@
  module.exports.identity = identity;
 
  /**
-  * typeOf: Design to any input value and return a string of the value's type.
-  * @param {collection or a primitive value} : intended to examine it's type
+  * typeOf: Designed to any input value, check the data type of value
+  * and return a string of the value's type.
+  * @param {collection or a primitive value}:intended to examine it's type
   * returns: a string of the value's type
   */
   function typeOf(value) {
@@ -37,8 +39,10 @@
     module.exports.typeOf = typeOf;
 
     /**
-     * first: Designed to take take an array and a number and return 
-     *  a new array with the first number(s) of item(s) based on the number input
+     * first: Designed to take a collection and a number and return 
+     * a new array with the first number(s) of item(s) based on the
+     * number input being greater than zero and less that collection
+     * .length.
      * @param {collection} Array : represents the collection input
      * @param {integer} number : represetns the number of items to be 
      * included in the new array 
@@ -63,9 +67,11 @@
 
 
 /**
- * last: Designed to take an array and a number and return return the
- *  last number of items in the array
- * @param {collection} array:  
+ * last: Designed to take an array and a number and return the
+ * last number of items in the array, if number is greater than
+ * zero and less that collection.length.
+ * @param {collection} array: original array from where to items
+ * in the return array will derive. 
  * @param {number} num: represents the number of items to be 
  * included in the returned array
  * @returns : an array with one or more elements or an empty array
@@ -96,7 +102,8 @@ module.exports.last = last;
 
 /**
  * indexOf: Designed to take a an array and a value and return
- * it's index
+ * it's index if that value is found in the collection, else,
+ * if value doesn't exist in the collection it retuns -1.
  * @param {collection} array: to be iterated upon to find index
  * @param {collection or simple data type} value: provided to 
  * check for that's value's index in the array  
@@ -118,10 +125,13 @@ module.exports.indexOf = indexOf;
 
 /**
  * contains: Designed to take an array and a value, and check if 
- * value is an element of that array.
+ * value is an element of that array, and if it that value is found 
+ * in the collection true, the function returns true else it 
+ * returns false.
  * @param {collection} array : provided to check if value is it's element
  * @param {collecton or simple data type} value: used to test if array cointains 
  * this value
+ * @returns: true if value is element of collection and false if it's not.
  */
  function contains(array, value) {
     // ternary operator checks if value is an item in array
@@ -130,12 +140,15 @@ module.exports.indexOf = indexOf;
 module.exports.cointains= contains;
 
 /**
- * each: Designed to take a collection to be iterated and a function that 
- * checks if collection is an object or an array and calls the function for each element 
+ * each: Designed to take a collection to be iterated and a function.
+ * checks if collection is an object or an array and calls the function
+ * for each value/element, index/key, object/array, then returns the 
+ * result of calling a function once for each element/value.
  * @param {collection} array or object: used in the iteration
- * @param {fucntion} action : takes in an element or [value], an index or key 
+ * @param {function} action : takes in an element or [value], an index or key 
  * and a collection after iteration
- * @returns : a function call with element or value, index or key and a collection
+ * @returns: a function call with element or value, index 
+ * or key and a collection
  */
 
 function each(collection, func) {
@@ -156,7 +169,8 @@ function each(collection, func) {
 
  /**
   * unique: Designed to take an array and apply the indexOf
-  * function to remove duplicates
+  * function to remove duplicates, and return a new array
+  * without duplicates.
   * @param: {colllection } array: to iterate over
   * @returns: a new array free of duplicates
   */
@@ -174,8 +188,10 @@ function unique(array) {
 module.exports.unique= unique;
 
 /**
- * filter: Designed to take in an array and a function and 
- * that takes three arguments (an element, an index and an array)
+ * filter: Designed to take in an array and a function that 
+ * takes three arguments (an element, an index and an array) and
+ * returns an array with items for which the result of calling the
+ * function was true.
  * @param: {collection} array: to be iterated over
  * @param: {fucnction} action: the function to be applied for each
  * value in the collection
@@ -194,7 +210,9 @@ function filter(array, func) {
 module.exports.filter= filter;
 
 /**
- * reject: Designed to take an array and a function, and apply the function to each item
+ * reject: Designed to take an array and a function, and apply the function to
+ * each item in the array and return an array with items for which calling 
+ * the function returned false.
  * @param {collection} array: to be iterated over and access items and indexes 
  * @param {fucntion} action: takes three arguments (element, index and array)
  * @returns: new array of elements for which calling function returned false
@@ -212,7 +230,10 @@ function reject(array, func) {
 module.exports.reject= reject;
 
 /**
- * partition: takes an array and a function, 
+ * partition: takes an array and a function, and applies the function 
+ * to each item in the collection and return two new arrays: one with values
+ * for which function returned true and the other with values for which 
+ * function returned false.
  * @param {collection} array: to be iterated over 
  * @param {function} action: takes three arguments(element, index, array)
  * @returns: a new array with values for which {function} returned truthy
@@ -237,7 +258,11 @@ function partition(array, func) {
 module.exports.partition = partition;
 
 /**
- * map: Designed to take in a collection and a function to be applied on the collection
+ * map: Designed to take in a collection and a function to be applied on the collection, 
+ * if the collection is an array it applies the function on the index, element and array
+ * and returns a new array with the result of calling the function. If the collection is 
+ * an object, it applies the function on the key, value and object and returns an array with
+ * the result of calling the function in the object, key and value.
  * @param {collection} array : to be iterated over 
  * @param {fucntion} action: takes three arguments (an element/value, an index/key and an array/object)
  * @returns: a new array with values corresponding to each function call
@@ -261,7 +286,9 @@ module.exports.partition = partition;
 module.exports.map = map;
 
 /**
- * pluck: Designed to be take a collection and a property
+ * pluck: Designed to take a collection and a property and a map function
+ * inside of it's code block to be applied on the each object and and return 
+ * a new array with properties of object contained in the array.
  * @param {collection} array: to be iterated over 
  * @param {primitive data} property: passed into the map function used in
  * the pluck fuction body
@@ -283,7 +310,8 @@ module.exports.pluck= pluck;
 
 /**
  * every: Designed to take a collection and a function to be applied on 
- * on the collection
+ * on the collection and if all items in the collection pass the test 
+ * function, it returns true, otherwise it returns false.
  * @param {collection} array or object: to be iterated over
  * @param {function} action: called with three arguments (value/element, key/index, 
  * and object/array)
@@ -326,7 +354,10 @@ function every(collection, func) {
 
  /**
   *some: Designed to take a collection and a function to be applied on 
-  * on the collection
+  * on the collection, and if the result of calling function is true 
+  * for at least one element/value or if function is not provided
+  * else returns false if the result of calling function for every
+  * element is false.
   * @param {collection} array or object: to be iterated over
   * @param {function} action: called with three arguments (value/element, key/index, 
   * and object/array)
@@ -371,7 +402,8 @@ function some(collection, func) {
 
   /**
    * reduce: Designed to take a collection and a function to be applied on every
-   * element of the collection
+   * element of the collection with three arguments(accumulator, currentValue 
+   * and a seed and return a single value (the accumulator) after the final function call.
    * @param {collection} array; to be iterated over
    * @param {function} action : called on every element of the array with
    * three arguments(accumulator, currentElement and index)
@@ -404,7 +436,7 @@ function reduce(array, func, seed) {
 
 /**
  * extend: Designed to take two or more collections and assign all object
- * keys to the first object
+ * keys to the first object and return that mutated object. 
  * @param {collection} object: object that will recieve keys from other objects
  * @param {collection} object1: will assign its keys to object 
  * @param {collection} object2: will pass its keys to object
